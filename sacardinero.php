@@ -6,8 +6,6 @@
 	<title>Banco Azul</title>
 
 	<link rel="icon" type="image/png" href="imagenes/alaLogo.png" />
-
-
 	<link href="static/css/style.css" rel="stylesheet">
 
 	<style>
@@ -66,11 +64,6 @@
 </head>
 
 <body class="bg-light">
-
-
-
-
-
 	<main role="main" class="container">
 		<div class="row">
 			<div class="col-12">
@@ -106,10 +99,10 @@
 									echo "<br>";
 									echo "<br>";
 									echo "<br>";
-									echo "<a href='retiro.php'><input type='submit' value='Retirar dinero' class='btn btn-success'></a>";
+									echo "<span><a href='retiro.php'><input type='submit' value='Retirar dinero' class='btn btn-success'></a></span>";
 									echo "<br>";
 									echo "<br>";
-									echo "<a href='midinero.php'><input type='button' class='btn btn-primary' value='regresar'> </a>";
+									echo "<span><a href='midinero.php'><input type='button' class='btn btn-primary' value='regresar'> </a></span>";
 									echo "</form>";
 
 									
@@ -124,28 +117,13 @@
 									echo "<br>";
 									echo '<a href="midinero.php"><button>Volver</button></a>';
 								}
-
-
 								?>
-
 							</center>
-
-
-
 						</div>
 					</div>
-
-
-
-
 				</div>
 			</div>
 		</div>
 	</main>
-
-
-
-
 </body>
-
 </html>

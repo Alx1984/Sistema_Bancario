@@ -3,7 +3,7 @@
 <head>
 
   </script>
-  <title>Bancolombia</title>
+  <title>Banco Azul</title>
 
   <link rel="icon" type="image/png" href="imagenes/alaLogo.png" />
 
@@ -103,8 +103,6 @@
         transform: scale(1)
       }
     }
-
-
 
     #home-box {
       display: block;
@@ -259,7 +257,6 @@
                   <a class="nav-link" onclick="document.getElementById('modal2-wrapper').style.display='block'"><button class="btn btn-warning">REGISTRARSE</button></a>
                 </div>
               </div>
-
 
               <div class="clearfix"></div>
             </div>

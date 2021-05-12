@@ -1,10 +1,10 @@
 <?php
-// session_start();
-// if (@!$_SESSION['usuario']) {
-//   header("Location:index.php");
-// } elseif ($_SESSION['rol'] == 'administrador') {
-//   header("Location: admin.php");
-// }
+session_start();
+$usuario = $_SESSION['usuario'];
+if (!isset($usuario)) {
+  header('location: index.php');
+} 
+
 ?>
 <html lang="es">
 
@@ -158,13 +158,7 @@
     </form>
 
   </div>
-
-  <!----FIN REGISTRO ---->
-
-
-
-
-
+    <!----FIN REGISTRO ---->
 
   <main role="main" class="container">
     <div class="row">
@@ -213,17 +207,7 @@
 
                   echo "</tr>";
                 }
-
-                echo "</table>";
-
-                extract($_GET);
-                if (@$idborrar == 2) {
-
-                  $sqlborrar = "DELETE FROM cuenta WHERE cod_cliente=$id"; 
-                  $resborrar = mysqli_query($conexion, $sqlborrar);
-                  echo '<script>alert("BANCO AZUL A ELIMINADO A ESTE USUARIO")</script> ';
-                  echo "<script>location.href='bancolombiaadmin.php'</script>";
-                }
+                
 
                 ?>
               </center>
@@ -277,17 +261,6 @@
                   echo "<td>$arreglo[2]</td>";
                   echo "<td>$arreglo[3]</td>";
                   echo "</tr>";
-                }
-
-                echo "</table>";
-
-                extract($_GET);
-                if (@$idborrar == 2) {
-
-                  $sqlborrar = "DELETE FROM dinero WHERE cod_cliente=$id";
-                  $resborrar = mysqli_query($mysqli, $sqlborrar);
-                  echo '<script>alert("BANCOLOMBIA A ELIMINADO A ESTE USUARIO")</script> ';
-                  echo "<script>location.href='bancolombiaadmin.php'</script>";
                 }
 
                 ?>

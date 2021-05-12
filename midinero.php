@@ -1,11 +1,11 @@
   <?php
   session_start();
-  // session_start();
-  // if (@!$_SESSION['user']) {
-  //   header("Location:index.php");
-  // }elseif ($_SESSION['rol']==1) {
-  //   header("Location:admin.php");
-  // }
+  $_SESSION['usuario'];
+  if (!isset($_SESSION['usuario'])) {
+    header('location: index.php');
+  } 
+
+  
   $codigo = $_SESSION['codigo'];
   $nCuenta = "";
 
@@ -14,8 +14,6 @@
   $query = mysqli_query($mysqli, $sql);
   $row = $query->fetch_assoc();
   $nCuenta = $row['ncta'];
-  
-  
   ?>
 
   <html>
@@ -63,14 +61,13 @@
         <div class="col-12">
           <div class="my-3 p-3 bg-white rounded box-shadow box-style">
             <div id="home-box">
-              <div class="content"><a href="desconectar.php"><input class="btn btn-danger" type="submit" name="submit" value="X" /></a>
-                <br>
-                <br>
+              <div class="content"><a href="desconectar.php"><input class="btn btn-danger" type="submit" name="submit" value="Salir" /></a>
                 <?php
                 require("conexion.php");
                 $sql = "SELECT cuenta.ncta, cuenta.cod_cliente, cliente.nombre_cliente, SUM(transacciones.monto) FROM cuenta, transacciones, cliente WHERE transacciones.ncta = '$nCuenta' AND cuenta.cod_cliente = '$codigo' AND cliente.cod_cliente = '$codigo'";
                 $query = mysqli_query($mysqli, $sql);
                 echo "<center><font color='068408' size='5'>Bienvenido a tu cuenta</font></center>";
+                echo "<center><font color='068408' size='5'>".$_SESSION['usuario']."</font></center>";
                 echo " <table class='table table-striped table-sm table-responsive-sm'>";
                 echo "<thead class='thead-dark'>";
 
@@ -85,8 +82,6 @@
                 echo "</tr>";
                 echo "</tr>";
                 ?>
-                <br>
-                <br>
 
                 <?php
                 while ($arreglo = mysqli_fetch_array($query)) {
@@ -99,8 +94,6 @@
                   echo "<td><div class='content'><a href='sacardinero.php?id=$arreglo[0]&cod=$arreglo[1]'><input class='btn btn-danger' type='submit' name='submit' value='Retiro' /></a></td>";
                   echo "<td><div class='content'><a href='deposito.php?id=$arreglo[0]&cod=$arreglo[1]'><input class='btn btn-success' type='submit' name='submit' value='Deposito' /></a></td>";
                 }
-
-
                 ?>
 
                 <?php
@@ -117,7 +110,7 @@
 
                 ?>
 
-                
+
                 <br>
                 <br>
               </div>
@@ -135,7 +128,7 @@
             <div>
               <br>
               <br>
-              <?php              
+              <?php
               require("conexion.php");
               $sql2 = ("SELECT cuenta.ncta, cuenta.cod_cliente, transacciones.monto, transacciones.tipo, transacciones.fecha  FROM cuenta, transacciones WHERE transacciones.ncta = '$nCuenta' AND cuenta.ncta = '$nCuenta'");
               $query2 = mysqli_query($mysqli, $sql2);
@@ -156,7 +149,7 @@
 
               ?>
               <br>
-              <br>
+
               <?php
               echo "<center><font color='068408' size='5'>Historial de Transacciones</font></center>";
               while ($arreglo2 = mysqli_fetch_array($query2)) {
@@ -167,7 +160,6 @@
                 echo "<td>$arreglo2[2]</td>";
                 echo "<td>$arreglo2[3]</td>";
                 echo "<td>$arreglo2[4]</td>";
-                //echo "<td><a href='sacardinero.php?id=$arreglo[0]'>sacar dinero </td>";
               }
 
               ?>
